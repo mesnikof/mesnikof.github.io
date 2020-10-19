@@ -1,12 +1,39 @@
 <?php
+/*
+ * This file is the primary PHP inclusion file for the Logbook web site.
+ *
+ * It should be called via a "require('../include/logbook-include.php);" call in every .PHP
+ * file in the web site.
+ *
+ * It also uses the "require" instruction to include several sub-files as well.
+ *
+ * Note: the "require" instruction will cause a failure and returned error message if the file
+ *       is not found.
+ *
+ * Note: Everything here should be made platform-non-specific so that this entire project's
+ *       directory structure can be moved easily from server to server.
+ */
+    
+/*
+ * These are the "require"d files.  Their individual data is explained within those files.
+ */
 require('../include/logbook-servers.php');
 require('../include/logbook-printout-headers.php');
 require('../include/logbook-menu.php');
 
+/*
+ * Define the "server_root" variable, making the Logbook system server-non-specific.
+ */
 $server_root = "https://";
 $server_root .= $_SERVER['SERVER_NAME'];
 $server_root .= "/logbook";
 
+/*
+ * The "logbook_header()" function automates the page header information, including defining the
+ * server_root and page_title global variables for each page.
+ *
+ * Nothing special here, mainly just output via "echo" of the necessary HTML information.
+ */
 function logbook_header() {
     $server_root = $GLOBALS['server_root'];
     $page_title = $GLOBALS['page_title'];
@@ -17,6 +44,13 @@ function logbook_header() {
     echo "<SCRIPT LANGUAGE=\"JavaScript\" SRC=\"$server_root/include/logbook-tips.js\"></script>\n";
 }
 
+/*
+ * The "logbook_footer()" function automates the page footer information, including defining the last
+ * access time through use of the "getlastmod()" method, feeding the "date()" method to generate the
+ * format we want.
+ *
+ * The rest is once again just "echo" instructions outputting the necessary HTML.
+ */
 function logbook_footer() {
     echo "<CENTER>\n<HR WIDTH=\"50%\" SIZE=\"8\" COLOR=\"#0000FF\">\n<BR>\n<FONT COLOR=\"#000000\">\n";
     echo "<ADDRESS>This page was last modified<BR>\n";
