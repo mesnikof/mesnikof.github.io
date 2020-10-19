@@ -1,17 +1,17 @@
-Here is the directory tree that cab be searched to look at the project files:
+Here is the directory tree that can be searched to look at the project files:<BR><BR>
 
-mesnikof.github.io/logbook
-mesnikof.github.io/logbook/index.html
-mesnikof.github.io/logbooklogbook_index.html
-mesnikof.github.io/logbook/city_codes.sql
-mesnikof.github.io/logbook/city_pairs.sql
-mesnikof.github.io/logbook/details.sql
-mesnikof.github.io/logbook/images
-mesnikof.github.io/logbook/images/arc002.gif
-mesnikof.github.io/logbook/images/book.gif
-mesnikof.github.io/logbook/images/book1.gif
-mesnikof.github.io/logbook/images/clock.gif
-mesnikof.github.io/logbook/images/compaq_ix.gif
+mesnikof.github.io/logbook<BR>
+mesnikof.github.io/logbook/index.html<BR>
+mesnikof.github.io/logbooklogbook_index.html<BR>
+mesnikof.github.io/logbook/city_codes.sql<BR>
+mesnikof.github.io/logbook/city_pairs.sql<BR>
+mesnikof.github.io/logbook/details.sql<BR>
+mesnikof.github.io/logbook/images<BR>
+mesnikof.github.io/logbook/images/arc002.gif<BR>
+mesnikof.github.io/logbook/images/book.gif<BR>
+mesnikof.github.io/logbook/images/book1.gif<BR>
+mesnikof.github.io/logbook/images/clock.gif<BR>
+mesnikof.github.io/logbook/images/compaq_ix.gif<BR>
 mesnikof.github.io/logbook/images/writing.gif
 mesnikof.github.io/logbook/include/logbook-include.php
 mesnikof.github.io/logbook/include/logbook-menu.php
@@ -29,4 +29,5 @@ mesnikof.github.io/logbook/pages/logbook-last30.php
 mesnikof.github.io/logbook/pages/logbook-last60.php
 mesnikof.github.io/logbook/pages/logbook-login.php
 mesnikof.github.io/logbook/pages/logbook-login2.php
-mesnikof.github.io/logbook/pages/logbook-
+
+Happy Reviewing...
