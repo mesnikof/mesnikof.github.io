@@ -36,3 +36,5 @@ Here is the directory tree that can be searched to look at the project files:<BR
 * mesnikof.github.io/logbook/pages/logbook-login2.php<BR>
 
 Happy Reviewing...
+
+Navigate to the files via: https://github.com/mesnikof/mesnikof.github.io/tree/master/logbook
