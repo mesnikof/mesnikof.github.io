@@ -22,10 +22,10 @@
  * Note: For this installation they are identical, but the do NOT need to be for other installations.
  */
 // The current web server hostname.
-//$web_svr = "173.209.96.241";
+//$web_svr = "***.***.**.241";
 $web_svr = "localhost";
 
 // The current sql server
-//$sql_svr = "173.209.96.241";
+//$sql_svr = "***.***.**.241";
 $sql_svr = "localhost";
 ?>
