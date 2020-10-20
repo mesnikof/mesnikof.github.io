@@ -138,6 +138,11 @@ function set_times() {
     return true;
 }
 </script>
+
+<style>
+input[type='text'] { font-size: 30px; }
+</style>
+
 </head>
 
 <?php
@@ -204,13 +209,13 @@ else {
  *
  * Where necessary and possible item-speific comments will follow.
  *
- * The initial fiew "echo"ed lines are the setup of the display, including the definition of the
+ * The initial few "echo"ed lines are the setup of the display, including the definition of the
  * input form and the table parameters, including several "hidden" values required for passing information
  * to the logbook-insert.php script.
  */
 echo "<FONT color=\"blue\">\n<H2>The Logbook Entry Posting Page</H2></font>\n\n";
 
-echo "<FORM NAME=\"LogbookEntryForm\" METHOD=\"post\" CLASS=\"formItem\" ACTION=\"$server_root/pages/logbook-insert.php\">\n";
+echo "<FORM NAME=\"LogbookEntryForm\" METHOD=\"post\" CLASS=\"formItem\" ACTION=\"$server_root/pages/logbook-mobile-device-insert.php\">\n";
 echo " <INPUT TYPE=\"hidden\" NAME=\"u_name\" id=\"u_name\" value=\"$u_name\" />\n";
 echo " <INPUT TYPE=\"hidden\" NAME=\"p_word\" id=\"p_word\" value=\"$p_word\" />\n";
 echo " <INPUT TYPE=\"hidden\" NAME=\"txfr\" VALUE=\"1\">\n";
@@ -218,74 +223,79 @@ echo " <INPUT TYPE=\"hidden\" NAME=\"transfer_date\" VALUE=\"$transfer_date\">\n
 echo " <INPUT TYPE=\"hidden\" NAME=\"out_time\" VALUE=\"NULL\">\n";
 echo " <INPUT TYPE=\"hidden\" NAME=\"in_time\" VALUE=\"NULL\">\n";
 
+echo "<TABLE BORDER=\"3\" WIDTH=\"100%\" CELLPADDING=\"5\" COLS=\"2\" BGCOLOR=\"#C0FFC0\">\n";
     
-///////////////////////////////////////////
+echo " <TR>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><INPUT TYPE=\"submit\" VALUE=\"Submit Entry\" style=\"font-size:30px;\"><BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B>Flight Options</B><BR></TD>\n";
+echo " </TR>\n";
     
+echo " <TR>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B>Date:</B><BR><INPUT TYPE=\"text\" NAME=\"date\" SIZE=\"10\" VALUE=\"$transfer_date\" onChange=\"change_date()\"><BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B><INPUT TYPE=\"radio\" NAME=\"a_c\" VALUE=\"9\" CHECKED>900<BR></TD>\n";
+echo " </TR>\n";
     
-echo "<TABLE BORDER=\"3\" WIDTH=\"100%\" CELLPADDING=\"5\" COLS=\"3\" BGCOLOR=\"#C0FFC0\">\n";
 echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><INPUT TYPE=\"submit\" VALUE=\"Submit Entry\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\">Flight Options<BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B>Flight Number:</B><BR><INPUT TYPE=\"text\" NAME=\"ident\" SIZE=\"5\"><BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B><INPUT TYPE=\"radio\" NAME=\"a_c\" VALUE=\"7\">700<BR></TD>\n";
 echo " </TR>\n";
+    
 echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><B>Date:</B><BR><INPUT TYPE=\"text\" NAME=\"date\" SIZE=\"10\" VALUE=\"$transfer_date\" onChange=\"change_date()\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\"><INPUT TYPE=\"radio\" NAME=\"a_c\" VALUE=\"9\" CHECKED>900<BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B>From:</B><BR><INPUT TYPE=\"text\" NAME=\"from\" SIZE=\"5\"><BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B><INPUT TYPE=\"radio\" NAME=\"a_c\" VALUE=\"2\">200<BR></TD>\n";
 echo " </TR>\n";
+    
 echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><B>Flight Number:</B><BR><INPUT TYPE=\"text\" NAME=\"ident\" SIZE=\"8\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\"><INPUT TYPE=\"radio\" NAME=\"a_c\" VALUE=\"7\">700<BR></TD>\n";
+echo " <TR>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B>To:</B><BR><INPUT TYPE=\"text\" NAME=\"to\" SIZE=\"5\"<BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B><INPUT TYPE=\"radio\" NAME=\"f_opt\" VALUE=\"std\" CHECKED>Standard<BR></TD>\n";
 echo " </TR>\n";
+    
 echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><B>From:</B><BR><INPUT TYPE=\"text\" NAME=\"from\" SIZE=\"12\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\"><INPUT TYPE=\"radio\" NAME=\"a_c\" VALUE=\"2\">200<BR></TD>\n";
-echo " </TR>\n";
-echo " <TR>\n";
-echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><B>To:</B><BR><INPUT TYPE=\"text\" NAME=\"to\" SIZE=\"12\"<BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\"><INPUT TYPE=\"radio\" NAME=\"f_opt\" VALUE=\"std\" CHECKED>Standard<BR></TD>\n";
-echo " </TR>\n";
-echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\">\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\">\n";
 echo "    <B>Out Time:</B><BR>\n<INPUT TYPE=\"text\" NAME=\"out_time_hours\" MAXLENGTH=\"2\" SIZE=\"2\">\n";
 echo "    <INPUT TYPE=\"text\" NAME=\"out_time_minutes\" MAXLENGTH=\"2\" SIZE=\"2\">\n";
 echo "    <INPUT TYPE=\"text\" NAME=\"out_time_seconds\" MAXLENGTH=\"2\" SIZE=\"2\" VALUE=\"00\" READONLY><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\"><INPUT TYPE=\"radio\" NAME=\"f_opt\" VALUE=\"oe_n\">New Hire OE<BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B><INPUT TYPE=\"radio\" NAME=\"f_opt\" VALUE=\"oe_n\">New Hire OE<BR></TD>\n";
 echo " </TR>\n";
+    
 echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\">\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\">\n";
 echo "    <B>Out Time:</B><BR>\n<INPUT TYPE=\"text\" NAME=\"in_time_hours\" MAXLENGTH=\"2\" SIZE=\"2\">\n";
 echo "    <INPUT TYPE=\"text\" NAME=\"in_time_minutes\" MAXLENGTH=\"2\" SIZE=\"2\">\n";
 echo "    <INPUT TYPE=\"text\" NAME=\"in_time_seconds\" MAXLENGTH=\"2\" SIZE=\"2\" VALUE=\"00\" READONLY><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\"><INPUT TYPE=\"radio\" NAME=\"f_opt\" VALUE=\"oe_c\">Captain OE<BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B><INPUT TYPE=\"radio\" NAME=\"f_opt\" VALUE=\"oe_c\">Captain OE<BR></TD>\n";
+echo " </TR>\n";
+    
+echo " <TR>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B>IFR Actual:</B><BR><INPUT TYPE=\"text\" NAME=\"actual\" SIZE=\"4\"><BR><BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B><INPUT TYPE=\"radio\" NAME=\"f_opt\" VALUE=\"lc\">Line Check<BR></TD>\n";
 echo " </TR>\n";
 echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><B>IFR Actual:</B><BR><INPUT TYPE=\"text\" NAME=\"actual\" SIZE=\"8\"><BR><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\"><INPUT TYPE=\"radio\" NAME=\"f_opt\" VALUE=\"lc\">Line Check<BR></TD>\n";
+    
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B>Night:</B><BR><INPUT TYPE=\"text\" NAME=\"night\" SIZE=\"2\"><BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B><INPUT TYPE=\"radio\" NAME=\"f_opt\" VALUE=\"fo\">FO Support<BR></TD>\n";
 echo " </TR>\n";
+    
 echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><B>Night:</B><BR><INPUT TYPE=\"text\" NAME=\"night\" SIZE=\"8\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\"><INPUT TYPE=\"radio\" NAME=\"f_opt\" VALUE=\"lc\">FO Support<BR></TD>\n";
+echo "  <TD ALIGN=\"center\" COLSPAN=\"2\" WIDTH=\"100%\">\n";
+echo "   <TABLE BORDER=\"0\" WIDTH=\"100%\" CELLPADDING=\"5\" COLS=\"3\" BGCOLOR=\"#C0FFC0\">\n";
+echo "    <TR>\n";
+echo "     <TD ALIGN=\"center\" WIDTH=\"33%\"><FONT SIZE=\"6\"><B>IFR-Apprch:</B><BR><INPUT TYPE=\"text\" NAME=\"approaches\" SIZE=\"2\"><BR></TD>\n";
+echo "     <TD ALIGN=\"center\" WIDTH=\"33%\" COLSPAN=\"2\"><FONT SIZE=\"6\"><B>Lndgs-Day:</B><BR><INPUT TYPE=\"text\" NAME=\"lndgs_day\" SIZE=\"2\"><BR></TD>\n";
+echo "     <TD ALIGN=\"center\" WIDTH=\"33%\"><FONT SIZE=\"6\"><B>Lndgs-Night:</B><BR><INPUT TYPE=\"text\" NAME=\"lndgs_night\" SIZE=\"2\"><BR></TD>\n";
+echo "    </TR>\n";
+echo "   </TABLE>\n";
+echo "  </TD>";
 echo " </TR>\n";
+    
 echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><B>IFR-Apprch:</B><BR><INPUT TYPE=\"text\" NAME=\"approaches\" SIZE=\"8\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><B>Lndgs-Day:</B><BR><INPUT TYPE=\"text\" NAME=\"lndgs_day\" SIZE=\"8\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\"><B>Lndgs-Night:</B><BR><INPUT TYPE=\"text\" NAME=\"lndgs_night\" SIZE=\"8\"><BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B><INPUT TYPE=\"submit\" VALUE=\"Submit Entry\" style=\"font-size:30px;\"><BR></TD>\n";
+echo "  <TD ALIGN=\"center\" WIDTH=\"50%\"><FONT SIZE=\"6\"><B><INPUT TYPE=\"reset\" VALUE=\"Clear Data\" style=\"font-size:30px;\"><BR></TD>\n";
 echo " </TR>\n";
-echo " <TR>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><INPUT TYPE=\"submit\" VALUE=\"Submit Entry\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"33%\"><BR></TD>\n";
-echo "  <TD ALIGN=\"center\" WIDTH=\"34%\"><INPUT TYPE=\"reset\" VALUE=\"Clear Data\"><BR></TD>\n";
-echo " </TR>\n";
+    
 echo "</TABLE>\n\n";
+echo "</FONT>\n";
 echo "</FORM>\n</CENTER>\n\n";
 
 logbook_footer();

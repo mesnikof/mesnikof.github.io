@@ -19,7 +19,7 @@
 ?>
     
 <FONT color="blue">
-<H1><IMG SRC="../logbook/images/writing.gif"><BR>Michael's Latest Logbook Home Page</h1>
+<H1><IMG SRC="../images/writing.gif"><BR>Michael's Latest Logbook Home Page</h1>
 </center>
 
 <HR>
