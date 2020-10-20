@@ -35,6 +35,7 @@ Here is the directory tree that can be searched to look at the project files:<BR
 * mesnikof.github.io/logbook/pages/logbook-login.php<BR>
 * mesnikof.github.io/logbook/pages/logbook-login2.php<BR>
 * mesnikof.github.io/logbook/pages/logbook-mobile-device-input.php<BR>
+* mesnikof.github.io/logbook/pages/logbook-mobile-device-insert.php<BR>
 
 Happy Reviewing...
 
