@@ -1,5 +1,7 @@
 <?php
 /*
+ * "logbook-include.php"
+ *
  * This file is the primary PHP inclusion file for the Logbook web site.
  *
  * It should be called via a "require('../include/logbook-include.php);" call in every .PHP
@@ -12,6 +14,12 @@
  *
  * Note: Everything here should be made platform-non-specific so that this entire project's
  *       directory structure can be moved easily from server to server.
+ *
+ * TODO: Add function(s) that perform the authentication tasks so as to remove the repeated
+ *       code in each of the logbook system's PHP scripts.
+ *
+ * TODO: Create some sort of MySQL "session" to eliminate the need to repeatedly pass the
+ *       uname and pword information back and forth.
  */
     
 /*

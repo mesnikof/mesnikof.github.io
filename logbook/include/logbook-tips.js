@@ -1,4 +1,22 @@
 /*
+ * "logbook-servers.js"
+ *
+ * This file contains a series of functions written in the javascript language. They are used
+ * to support the fuctionality of the logbook system.
+ *
+ * These functions are utilized throughout the system making their inclusion as a single group
+ * into each of the pages utilized/displayed by the logbook system preferable to manually
+ * including them in each file.
+ *
+ * These scripts are not meant to be standalone.  They are meant to be included into the HTML
+ * "header" block of each file.  As such they do not contain any of the usual HTML information.
+ * This is assumed to exist in the files that "include" this file.
+ *
+ * Finally, these scripts are used to create "dynamic" actions on the user's browser, such as
+ * displaying pop-up "balloon" help text.
+ */
+
+/*
  * Some needed global variables
  */
 var theMsg = '.';
@@ -8,6 +26,12 @@ var widthMsg = 0;
 var tp = 0;
 
 function validation() {
+    /*
+     * This function confirms that both the uname and pword fields are entered when required.
+     * If either is missing a message is shown to the user, and "false" is returned.  If both
+     * exist "true" is returned.  It is assumed that the calling HTML/javascript will act
+     * upon this return value.
+     */
     var name = document.getElementById("u_name").value;
     var email = document.getElementById("p_word").value;
     if (u_name === '' || p_word === '') {
@@ -61,9 +85,11 @@ if (document.getElementById) {
         d.writeln(this.body);
         d.writeln("</DIV>");
 
-        // Now, for convenience, save references to the <DIV> element
-        // we've created, and to its associated Style element.
-        // These will be used throughout the methods that follow.
+        /*
+         * Now, for convenience, save references to the <DIV> element
+         * we've created, and to its associated Style element.
+         * These will be used throughout the methods that follow.
+         */
         tp = document.getElementById("tipID");
         tp.style.visibility = "hidden";
     }
@@ -202,6 +228,9 @@ else if (document.layers) {
 var theTip = new tips(window, theMsg);
 
 function makeItVisible(body) {
+  /*
+   * This function, as might be expected, makes the "balloon" help text visible.
+   */
   theTip.setLoc();
   theTip.moveTo(leftMsg, topMsg, widthMsg);
   theTip.setBody(body);

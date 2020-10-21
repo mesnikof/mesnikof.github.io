@@ -1,6 +1,29 @@
 <?php
+/*
+ * "logbook-menu.php"
+ *
+ * This script contains the php function that creates the "menu bar" shown across the top of almost
+ * every "interaction" page in the logbook system.  This does not include the mobile interaction
+ * pages, nor does it inslude the "display only" pages such as "logbook-dump".
+ *
+ * A significant amount of the menu's capabilities use javascript for functionality, as all the
+ * "dynamic" functionality takes place within the user's browser, beyond the scope of PHP.  As such,
+ * we go in and out of PHP within this script file when extensive blocks of javascript need to be
+ * written to the user's browser.  The reason for not using a "pure" HTML/javascript file is the
+ * need to dynamically create some of the vairables and links based upon session-specific data.
+ */
+    
 function logbook_menu() {
+/*
+ * This is the single, primary PHP method contained in the script.
+ *
+ * After defining the function name we immediately exit PHP to output a block of javascript code.
+ *
+ * This code contains the variables which contain the "help" strings displayed when a user
+ * does a "mouse-over" of the items in the menu bar.
+ */
 ?>
+
 <SCRIPT LANGUAGE="javascript">
 // Add the button bar help strings
 var bal_logbook_data = "Accesses a page with the basic logbook data totals.";
@@ -10,7 +33,27 @@ var bal_logbook_showall = "Display all the logbook entries.";
 var bal_logbook_last30 = "Display the last 30 days of logbook entries.";
 var bal_logbook_home = "Go back to the Logbbok Home Page.";
 </script>
+
 <?php
+/*
+ * We return to PHP to create the bulk of the menu bar.
+ *
+ * First we make sure to create and load the srver_root, u_name, and p_word variables to be
+ * certain that this data is avilable to the functionality built into the menu bar.
+ *
+ * This MAY be redundant.  These variables may have already been loaded earlier in the different
+ * pages, so this is merely to be certain of this information's availablility.  For future
+ * update, this should be checked, and made to take place in a single location for ease of
+ * future maintenance.
+ *
+ * Note: While each of the menu item's creation code is very similar, there are subtle differences
+ * from item to item, precluding the use of a global style sheet.  While it does make each item's
+ * code somewhat "messier", it is currently necessary.
+ *
+ * TO-DO: Make the variable creation/loading a single location shared by all.
+ * TO-DO: Set up MySQL "sessions" with a session ID so as to stop having to pass the uname/pword
+ *        data back and forth for every page.
+ */
     $server_root = $GLOBALS['server_root'];
 
     if(isset($_POST['u_name']) && isset($_POST['p_word'])) {
@@ -18,6 +61,13 @@ var bal_logbook_home = "Go back to the Logbbok Home Page.";
         $p_word = $_POST['p_word'];
     }
 
+    /*
+     * The menu itself is create using an HTML "table" to create the desired alignment.  Within
+     * ech table "cell" we define an icon/button, a link location (the web-page/PHP-script to
+     * execute, and a "balloon" pop-up help text to display on "mouse over".  This last takes
+     * place using javascrip functions defind in the "logbook-tips.js" file.
+     */
+    
     echo "  <FORM METHOD=\"post\" action=\"$server_root/pages/logbook-input.php\">\n";
     echo "  <INPUT TYPE=\"hidden\" name=\"u_name\" id=\"u_name\" value=\"$u_name\" />\n";
     echo "  <INPUT TYPE=\"hidden\" name=\"p_word\" id=\"p_word\" value=\"$p_word\" />\n\n";
@@ -63,5 +113,7 @@ var bal_logbook_home = "Go back to the Logbbok Home Page.";
     echo "<A HREF=\"$server_root/index.html\">\n";
     echo "<IMG BORDER=\"0\" ALT=\"LOGBOOK LOGO - Go to the Logbook Homepage\" ALIGN=\"center\" SRC=\"$server_root/images/compaq_ix.gif\"><BR>\n";
     echo "</A>\n\n";
+
+    return; // End of function logbook_menu()
 }
 ?>

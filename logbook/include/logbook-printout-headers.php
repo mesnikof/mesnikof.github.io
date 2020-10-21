@@ -1,4 +1,24 @@
 <?php
+/*
+ * "logbook-printout-headears.php"
+ *
+ * This PHP script conatins three functions, each of which simply outputs a set of HTML
+ * "table header" information.  This is used repeatedly in several of the PHP scripts that
+ * make up the logbook system.
+ *
+ * Each of these functions simply uses the "echo" instruction to output the desired HTML
+ * format information.  Everything is contained within PHP as use is made of the PHP variable
+ * data to create the specific content.
+ *
+ * The PHP and HTML are very straightforward, and should be understandable without additional
+ * explanation.  The input arguments for each function are a PHP "array" variable, which is
+ * then "extracted" during the function execution.
+ *
+ * Note: The outpu format is meant to mimic a popular "standard" pilot logbook that is
+ * considered acceptable for use by the FAA.  As a pilot's logbook is considered a legal
+ * document, this output needs to be in a format the FAA considers proper for submission
+ * should this become necessary.
+ */
 function page_totals_header($page_totals) {
     echo "  <TR>\n    <TH ALIGN=\"center\" COLSPAN=\"23\"><SMALL>Totals This Page</SMALL></TH>\n  </TR>\n";
     echo "  <TR>\n    <TD COLSPAN=\"5\">&nbsp</TD>\n";
