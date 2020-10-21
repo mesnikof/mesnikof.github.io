@@ -1,4 +1,19 @@
 <?php
+    /*
+     * "little-test.php"
+     *
+     * This PHP script is not, strictly speaking, a part of the logbook system.  It is, as the
+     * filename implies, a small test unit, allowing for the developer to test either existing/updated
+     * PHP script actions after maintenance/update coding has taken place, or to perfrom similar
+     * testing on new functionality prior to inclusion in the logbook system.  This file is used to
+     * allow for the easy inclusion of the "require"ed include script information.
+     *
+     * The file IS included as part of the logbook package so as to make system migration a simpler
+     * process.
+     *
+     * No additional commenting is included as it is assumed that this file will be changed repeatedly
+     * and is only for the developers' non-production use.
+     */
     require('../include/logbook-include.php');
 
     logbook_header();
@@ -12,8 +27,8 @@
     $line_count = 0;
     $result_row = 1;
 
-    $dbUser = "mesnikof";
-    $password = "GeddyLeeRush00";
+    $dbUser = "********";
+    $password = "********";
     $database = "logbook";
 
     $dbConn = new mysqli($sql_svr,$dbUser,$password,$database);
