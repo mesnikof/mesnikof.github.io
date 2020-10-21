@@ -1,5 +1,7 @@
 <?php
 /*
+ * "logbook-servers.php"
+ *
  * This file contains the definitions of the all-important web- and sql-server locations.
  *
  * These need to be manually edited, similar to the "my.cnf" file for a MySQL server installation,
