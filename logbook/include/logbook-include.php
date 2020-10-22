@@ -71,3 +71,4 @@ function logbook_footer() {
     echo "</address>\n</font>\n</center>\n<BR>\n</body>\n</html>\n";
 }
 ?>
+
