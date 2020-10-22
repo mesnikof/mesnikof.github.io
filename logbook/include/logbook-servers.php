@@ -31,4 +31,3 @@ $web_svr = "localhost";
 //$sql_svr = "***.***.**.241";
 $sql_svr = "localhost";
 ?>
-
