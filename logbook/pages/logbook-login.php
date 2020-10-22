@@ -135,4 +135,3 @@ logbook_footer();
 exit();
 }
 ?>
-
