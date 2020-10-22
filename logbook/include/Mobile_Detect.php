@@ -1475,3 +1475,4 @@ class Mobile_Detect
         return self::MOBILE_GRADE_C;
     }
 }
+
