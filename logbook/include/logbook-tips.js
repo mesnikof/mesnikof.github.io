@@ -238,4 +238,3 @@ function makeItVisible(body) {
 }
 
 theTip.output();
-
