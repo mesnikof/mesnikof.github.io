@@ -223,3 +223,4 @@
     logbook_footer();
     exit();
 ?>
+
